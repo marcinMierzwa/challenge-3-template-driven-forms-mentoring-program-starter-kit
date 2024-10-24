@@ -135,7 +135,7 @@
           autocomplete="off"
           class="btn-check"
           id="{{ level }}"
-          name="accesslevel"
+          name="{{ level.toLocaleLowerCase() }}"
           [(ngModel)]="user.accesslevel[index]"
           required
         />
