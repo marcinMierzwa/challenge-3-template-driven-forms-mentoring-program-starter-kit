@@ -1,0 +1,120 @@
+<div class="container-fluid vw-100 vh-100 p-4">
+
+  <form 
+  class="w-75 mx-auto"
+  #form="ngForm"
+  (ngSubmit)="onSubmitted()"
+  >
+
+    <!-- email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+      class="form-control" 
+      type="email" 
+      id="email" 
+      placeholder="e.g.john@example.com"
+      spellcheck="false"
+      name="email" 
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      aria-describedby="emailHelp"
+      required
+      email
+      >
+      <div class="p-1" style="height: 1.5rem;">
+        @if (email?.touched && email?.errors?.['required']) {
+        <small id="emailHelp" class="form-text text-danger fst-italic fw-medium">Email field is required!</small>
+        }
+
+        @if (email?.touched && email?.errors?.['email']) {
+        <small id="emailHelp" class="form-text text-danger fst-italic fw-medium">Invalid Email format!</small>
+        }
+      </div>
+    </div>
+
+    <!-- username -->
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input 
+      class="form-control" 
+      type="text" 
+      id="username" 
+      placeholder="e.g.joe123"
+      spellcheck="false"
+      name="username" 
+      [(ngModel)]="user.username"
+      #username="ngModel"
+      aria-describedby="usernameHelp"
+      required
+      pattern="^[a-z][a-z0-9]*$"
+      >
+        <div class="p-1" style="height: 1.5rem;">
+        @if (username?.touched && username?.errors?.['required']) {
+          <small id="usernameHelp" class="form-text text-danger fst-italic fw-medium">Username field is required!</small>
+        }
+
+        @if (username?.touched && username?.errors?.['pattern']) {
+          <small id="emailHelp" class="form-text text-danger fst-italic fw-medium">Username must start with a letter and only contain lowercase letters and numbers!</small>
+        }
+      </div>
+    </div>
+    
+    <!-- password  -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input 
+      class="form-control" 
+      type="password" 
+      id="password" 
+      placeholder="**********"
+      spellcheck="false"
+      name="password" 
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      aria-describedby="passwordHelp"
+      required
+      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$"
+      minlength="6"
+      >
+        <div class="p-1" style="height: 1.5rem;">
+        @if (password?.touched && password?.errors?.['required']) {
+          <small id="passwordHelp" class="form-text text-danger fst-italic fw-medium">Password field is required!</small>
+        }
+
+        @if (password?.touched && (password?.errors?.['minlength'] || password?.errors?.['pattern'])) {
+          <small id="passwordHelp" class="form-text text-danger fst-italic fw-medium">Password must contains min 6 characters long, at least one lowercase letter, one capital letter, one number, and one special character!</small>
+        }
+
+      </div>
+    </div>
+
+    <!-- role  -->
+    <div class="mb-3">
+      <select class="form-select" multiple aria-label="Multiple select example">
+      <option  value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+    <!-- accesslevel  -->
+    <div class="mb-3">
+      <div class="d-flex gap-1">
+      <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
+
+      <input type="checkbox" class="btn-check" id="btn-check-2-outlined" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btn-check-2-outlined">Single toggle</label><br>
+
+      <input type="checkbox" class="btn-check" id="btn-check-3-outlined" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btn-check-3-outlined">Single toggle</label><br>
+      </div>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+    <!-- submit -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

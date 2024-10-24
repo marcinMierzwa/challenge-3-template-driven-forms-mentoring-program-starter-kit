@@ -1,0 +1,14 @@
+select {
+    scrollbar-width: none;
+    cursor: pointer;
+}
+
+.ng-touched {
+    border-color: rgb(255, 77, 77);
+}
+
+.ng-valid {
+    border-color: green;
+}
+
+
